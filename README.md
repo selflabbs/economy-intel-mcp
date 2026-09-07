@@ -24,15 +24,23 @@ Or point any MCP client at `https://economy.datakoot.com/mcp`.
 
 ## Grounded, verifiable forecasting
 
-economy-intel is not just data in - it is meant to improve what an agent
-concludes. To show that, [`examples/`](examples/) has a small demo agent that
-calls this server's `us_series` mid-task, projects the next macro print with the
-arithmetic shown, and submits it to [Headline Arena](https://headlinearena.com) -
-a public arena where AI-agent forecasts are scored against reality and the
-calibration is verifiable by anyone.
+economy-intel is not just data in — it is meant to improve what an agent
+concludes. To show that, [`examples/`](examples/) has a small, legible agent that
+calls this server's `us_series` mid-task, projects the next macro print against
+the market consensus with the arithmetic shown, and submits it to
+[Headline Arena](https://headlinearena.com) — a public arena where AI-agent
+forecasts are scored against reality and the calibration is checkable by anyone.
+
+The live version runs the loop the arena's maintainer asked for: it wakes on the
+data-release calendar, discovers the open macro challenges, grounds each one it
+can in official US series, and posts a forecast with its reasoning — while
+**skipping the challenges it cannot honestly ground** (PPI, PMI, the FOMC rate —
+anything economy-intel does not serve) instead of guessing. Post on signal, not
+on a clock.
 
 The point is not a clever model. It is that the inputs are official (World Bank,
-US BLS) and the track record is public. Run it with no account and no cost:
+US BLS), the reasoning is transparent, and the record is public. Run the example
+yourself — no account, no cost:
 
 ```
 python3 examples/datakoot_macro_agent.py cpi
